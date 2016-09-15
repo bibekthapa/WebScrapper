@@ -1,21 +1,35 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.example.WebScrapper;
 
-/**
- *
- * @author HOME
- */
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Program {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
+    public static void main(String[] args) throws IOException {
+        URL url = new URL("http://www.jobsnepal.com");
+        URLConnection conn = url.openConnection();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+        String line = "";
+        StringBuilder content = new StringBuilder();
+        while ((line = reader.readLine()) != null) {
+            content.append(line).append("\n");
+
+        }
+        // First regular expression , then pattern and then Matcher
+        reader.close();
+        String regex="<a class=\"job-item\"(.*?)href=\"(.*?)\"\\s>\\n(.*?)</a>";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher=pattern.matcher(content.toString());
+        while(matcher.find()){
+           System.out.println(matcher);
+          // System.out.println(matcher.group().trim());
+        }
+
     }
-    
+
 }
