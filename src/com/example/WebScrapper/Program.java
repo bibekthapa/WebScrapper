@@ -9,6 +9,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -17,13 +18,19 @@ public class Program {
     public static void main(String[] args) throws IOException {
        
         
-        String link=("http://www.jobsnepal.com");
+        String link=("http://www.jobsnepal.com/simple-job-search");
+        
+        System.out.println("Enter the keyword to search");
+        
+        Scanner scanner=new Scanner(System.in);
+        String params=scanner.next();
        
       
         //Content of regex is of group(0)//Content inside the bracket after job item is group(1) //Content inside the bracket after href is group(2)//Content inside the bracket after \n is group(3)
         String regex="<a class=\"job-item\"(.*?)href=\"(.*?)\"\\s>\\n(.*?)</a>";
         Grabber grabber=new Grabber();
-        String content=grabber.grab(link);
+        //Usage of "Keywords=" is very important; Without this code will not work for post method.That means only passing params will not work
+        String content=grabber.post(link,"Keywords=".concat(params));
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher=pattern.matcher(content.toString());
         while(matcher.find()){
