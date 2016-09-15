@@ -26,8 +26,8 @@ public class Program {
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher=pattern.matcher(content.toString());
         while(matcher.find()){
-           System.out.println(matcher);
-          // System.out.println(matcher.group().trim());
+           //System.out.println(matcher);
+          System.out.println(matcher.group().trim());
         }
 
     }
