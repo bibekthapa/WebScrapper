@@ -22,12 +22,20 @@ public class Program {
         }
         // First regular expression , then pattern and then Matcher
         reader.close();
+        //Content of regex is of group(0)
+        //Content inside the bracket after job item is group(1)
+        //Content inside the bracket after href is group(2)
+        //Content inside the bracket after \n is group(3)
         String regex="<a class=\"job-item\"(.*?)href=\"(.*?)\"\\s>\\n(.*?)</a>";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher=pattern.matcher(content.toString());
         while(matcher.find()){
            //System.out.println(matcher);
-          System.out.println(matcher.group().trim());
+          System.out.println(matcher.group(2).trim());
+            System.out.println(matcher.group(3).trim());
+            System.out.println("\n");
+            
+           
         }
 
     }
