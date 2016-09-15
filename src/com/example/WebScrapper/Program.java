@@ -1,6 +1,7 @@
 package com.example.WebScrapper;
 
 import com.example.WebScrapper.command.JnScrapper;
+import com.example.WebScrapper.command.MjScrapper;
 import com.example.WebScrapper.command.Scrapper;
 import com.example.WebScrapper.util.Grabber;
 import java.io.BufferedReader;
@@ -19,7 +20,7 @@ public class Program {
 
     public static void main(String[] args) throws IOException {
        
-        Scrapper scrapper=new JnScrapper();
+        Scrapper scrapper=new MjScrapper();
         scrapper.scrap();
         
 
