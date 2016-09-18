@@ -11,9 +11,12 @@ import java.net.URL;
 
 public class Grabber {
 
+    
+   
     public String get(String link) throws IOException {
         URL url = new URL(link);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        
         // URLConnection conn = url.openConnection();
         BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
         //BufferedWriter writer = new BufferedWriter(new FileWriter("C:/users/home/desktop/java/studentrecord.txt"));

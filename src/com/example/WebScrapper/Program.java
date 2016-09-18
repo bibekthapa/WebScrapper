@@ -21,7 +21,9 @@ public class Program {
     public static void main(String[] args) throws IOException {
        
         Scrapper scrapper=new MjScrapper();
+        Scrapper scrapjn=new JnScrapper();
         scrapper.scrap();
+        scrapjn.scrap();
         
 
          //writer.close();

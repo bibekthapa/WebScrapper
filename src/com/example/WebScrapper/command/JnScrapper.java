@@ -31,7 +31,7 @@ public class JnScrapper extends Scrapper {
         String regex="<a class=\"job-item\"(.*?)href=\"(.*?)\"\\s>\\n(.*?)</a>";
         Grabber grabber=new Grabber();
         //Usage of "Keywords=" is very important; Without this code will not work for post method.That means only passing params will not work
-        String content=grabber.post(link,"Keywords=".concat(params));
+        String content=grabber.post(link,"Keywords=".concat(params)); //This take to get method in Grabber
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher=pattern.matcher(content.toString());
         while(matcher.find()){
@@ -43,6 +43,11 @@ public class JnScrapper extends Scrapper {
             
             
         }
+    }
+
+    @Override
+    public void grab() throws IOException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
