@@ -26,27 +26,36 @@ public class MjScrapper extends Scrapper {
 
         Scanner scanner=new Scanner(System.in);
         String params=scanner.next();
+        System.out.println("\n");
         String link = ("http://www.merojob.com/search-new/index.php?search=".concat(params));
 
        
-        String regex = "<h4 class='(.*?)>(.*?)<(.*?)alt=(.*?)\\n";
+        String regex = "<h4 class=(.*?)>(.*?)<(.*?)h4>\\n(.*?)<p class=(.*?)>(.*?)</p>";
+        
 
         Grabber grabber = new Grabber();
+        int i=1;
        
         String content = grabber.get(link);
        // System.out.println(content);
         Pattern pattern = Pattern.compile(regex);
+        
         Matcher matcher = pattern.matcher(content.toString());
+         
         while (matcher.find()) {
-
-            //writer.write(matcher.group(1).trim()); // writer.append(matcher.group(2).trim());//writer.append(matcher.group(4).trim());// writer.append(matcher.group(6).trim());////writer.append("\n");  //System.out.println(matcher);
-            System.out.println(matcher.group(2).trim());
-            //System.out.println(matcher.group(4).trim());
-           // System.out.println(matcher.group(6).trim());
+            
+           
+              
+                
+            System.out.println(i+" " +matcher.group(2).trim());
+            
+             System.out.println(matcher.group(6).trim());
+            
+            
             System.out.println("\n");
-
+            i++;
         }
-        //writer.close();
+    
 
     }
 
