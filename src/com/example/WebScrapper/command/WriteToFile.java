@@ -5,16 +5,10 @@
  */
 package com.example.WebScrapper.command;
 
-import java.io.IOException;
-
 /**
  *
  * @author HOME
  */
-public abstract class Scrapper {
-    
-    public abstract void scrap(String params) throws IOException;
-    public abstract void grab() throws IOException;
-    
+public class WriteToFile {
     
 }

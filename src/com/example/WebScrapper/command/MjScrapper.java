@@ -7,6 +7,7 @@ package com.example.WebScrapper.command;
 
 import com.example.WebScrapper.util.Grabber;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
@@ -20,20 +21,18 @@ import java.util.regex.Pattern;
 public class MjScrapper extends Scrapper {
 
     @Override
-    public void scrap() throws IOException {
+    public void scrap(String params) throws IOException {
         
-        System.out.println("Enter the keyword");
-
-        Scanner scanner=new Scanner(System.in);
-        String params=scanner.next();
-        System.out.println("\n");
+        
         String link = ("http://www.merojob.com/search-new/index.php?search=".concat(params));
-
+        String link1="C:/Users/Home/Desktop/java/sample.txt"; 
+        File file=new File(link1);
+        BufferedWriter writer=new BufferedWriter(new FileWriter(file));
        
         String regex = "<h4 class=(.*?)>(.*?)<(.*?)h4>\\n(.*?)<p class=(.*?)>(.*?)</p>";
         
 
-        Grabber grabber = new Grabber();
+        Grabber grabber = new Grabber() {};
         int i=1;
        
         String content = grabber.get(link);
@@ -44,7 +43,11 @@ public class MjScrapper extends Scrapper {
          
         while (matcher.find()) {
             
-           
+           writer.write(matcher.group(2).trim());
+           writer.append("\n");
+           writer.append("\n");
+            
+            writer.write(matcher.group(6).trim());
               
                 
             System.out.println(i+" " +matcher.group(2).trim());
@@ -56,7 +59,7 @@ public class MjScrapper extends Scrapper {
             i++;
         }
     
-
+            writer.close();
     }
 
     public void write() throws IOException {

@@ -19,14 +19,12 @@ import java.util.regex.Pattern;
 public class Program {
 
     public static void main(String[] args) throws IOException {
-       
-        Scrapper scrapper=new MjScrapper();
-        //Scrapper scrapjn=new JnScrapper();
-        scrapper.scrap();
-        //scrapjn.scrap();
         
-
-         //writer.close();
+        
+       
+       Controller scrpcontroller=new Controller();//this makes the object only
+       scrpcontroller.add();//object with method implements
+       
     }
 
 }
