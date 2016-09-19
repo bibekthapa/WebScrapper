@@ -5,6 +5,7 @@
  */
 package com.example.WebScrapper;
 
+import com.example.WebScrapper.command.HamroScrapper;
 import com.example.WebScrapper.command.JnScrapper;
 import com.example.WebScrapper.command.MjScrapper;
 import com.example.WebScrapper.command.Scrapper;
@@ -26,10 +27,13 @@ public class Controller {
         Scanner scanner=new Scanner(System.in);
         String params= scanner.next();
     
-     Scrapper scrapper=new MjScrapper();
+    /* Scrapper scrapper=new MjScrapper();
         scrapper.scrap(params);
         
         Scrapper scrapper1=new JnScrapper();
         scrapper1.scrap(params);
+      */  
+        Scrapper hamroscrapper=new HamroScrapper();
+        hamroscrapper.scrap(params);
      }
 }
