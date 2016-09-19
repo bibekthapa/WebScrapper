@@ -9,7 +9,7 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public abstract class Grabber {
+public class Grabber {
 
     
    
@@ -17,9 +17,9 @@ public abstract class Grabber {
         URL url = new URL(link);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         
-        // URLConnection conn = url.openConnection();
+       
         BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-        //BufferedWriter writer = new BufferedWriter(new FileWriter("C:/users/home/desktop/java/studentrecord.txt"));
+        
         String line = "";
         StringBuilder content = new StringBuilder();
         while ((line = reader.readLine()) != null) {
@@ -27,7 +27,7 @@ public abstract class Grabber {
             content.append(line).append("\n");
 
         }
-        // First regular expression , then pattern and then Matcher
+       
         reader.close();
         return content.toString();
     }

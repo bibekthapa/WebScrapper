@@ -5,6 +5,7 @@
  */
 package com.example.WebScrapper.command;
 
+import com.example.WebScrapper.export.FileExport;
 import com.example.WebScrapper.util.Grabber;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -29,14 +30,14 @@ public class JnScrapper extends Scrapper {
     public void scrap(String params) throws IOException {
         String link = ("http://www.jobsnepal.com/simple-job-search");
 
-        String link1="C:/Users/Home/Desktop/java/sample.txt"; 
+          String link1="C:/Users/Home/Desktop/java/sample.txt"; 
         File file=new File(link1);
-        BufferedWriter writer=new BufferedWriter(new FileWriter(file));
+        BufferedWriter writer=new BufferedWriter(new FileWriter(file,true));// writing true will only allow to append in the file
+       //
        
 
         String regex = "<a class=\"job-item\"(.*?)href=\"(.*?)\"\\s>\\n(.*?)</a>";
-        Grabber grabber = new Grabber() {
-        };
+        Grabber grabber = new Grabber(); 
 
         String content = grabber.post(link, "Keywords=".concat(params)); //This take to get method in Grabber
         Pattern pattern = Pattern.compile(regex);
@@ -46,13 +47,17 @@ public class JnScrapper extends Scrapper {
             //writer.write(matcher.group(1).trim()); // writer.append(matcher.group(3).trim());// writer.append("\n");  //System.out.println(matcher);
             
             writer.append(matcher.group(2).trim());
+             writer.append("\n");
             writer.append(matcher.group(3).trim());
+            
+             writer.append("\n");
             System.out.println(matcher.group(2).trim());
             System.out.println(matcher.group(3).trim());
             System.out.println("\n");
 
         }
         writer.close();
+       
     }
 
     @Override

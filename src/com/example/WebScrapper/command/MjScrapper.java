@@ -44,10 +44,12 @@ public class MjScrapper extends Scrapper {
         while (matcher.find()) {
             
            writer.write(matcher.group(2).trim());
-           writer.append("\n");
-           writer.append("\n");
+            writer.append("\n");
+           
             
             writer.write(matcher.group(6).trim());
+            writer.append("\n");
+           
               
                 
             System.out.println(i+" " +matcher.group(2).trim());
