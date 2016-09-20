@@ -33,7 +33,7 @@ public class HamroScrapper extends Scrapper {
         int i=1;
        
         String content = grabber.get(link);
-       // System.out.println(content);
+        System.out.println(content);
         Pattern pattern = Pattern.compile(regex);
         
         Matcher matcher = pattern.matcher(content.toString());
